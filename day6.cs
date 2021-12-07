@@ -28,12 +28,13 @@ namespace ConsoleApp1
                     //Runs the experiement as many days as chosen
                     for (int j = 0; j < numberOfDays; j++)
                     {
-                        //Write out the whole list of fish values
+                        /*Write out the whole list of fish values
                         foreach (int i in listOfFish)
                         {
                             Console.Write(i);
                             Console.Write(",");
                         }
+                        */
 
                         //Count all 0 = Zeros
                         int Zeros = (from x in listOfFish where x < 1 select x).Count();
