@@ -25,7 +25,7 @@ while (success != true)
     if (success)
     {
         //Runs the experiement as many days as chosen
-        for (int j = 0; j < numberOfDays; j++)
+        for (int i = 1; i < numberOfDays+1; i++)
         {
             //Adds new fish for each 0
             tempInt = countx[0];
@@ -36,9 +36,9 @@ while (success != true)
             //Remove index 0, adds one element to keep it the same amount
             countx.RemoveAt(0);
             countx.Add(0);
-            
+            //Adds all number of fish to "count"
             count = countx[0]+ countx[1]+ countx[2]+ countx[3]+ countx[4]+ countx[5]+ countx[6]+ countx[7]+ countx[8];
-            Console.WriteLine(j + " number of days has passed.");
+            Console.WriteLine(i + " number of days has passed.");
             Console.WriteLine("There are now " + count + " number of fish and counting...");
         }
     }
