@@ -1,0 +1,54 @@
+//User chooses how many days to run the experiment
+Console.Write("Choose how many days to run the fish experiment: ");
+int numberOfDays = 0;
+//Using long since it will be over billions
+long tempInt;
+long count = 0;
+List<long> countx = new List<long>();
+bool success = false;
+
+//Create list of all fish starting in the list
+List<sbyte> listOfFish = new List<sbyte>()
+            {
+                1,4,1,1,1,1,5,1,1,5,1,4,2,5,1,2,3,1,1,1,1,5,4,2,1,1,3,1,1,1,1,1,1,1,2,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,4,1,1,1,1,5,1,4,1,1,4,1,1,1,1,4,1,1,5,5,1,1,1,4,1,1,1,1,1,3,2,1,1,1,1,1,2,3,1,1,2,1,1,1,3,1,1,1,2,1,2,1,1,2,1,1,3,1,1,1,3,3,5,1,4,1,1,5,1,1,4,1,5,3,3,5,1,1,1,4,1,1,1,1,1,1,5,5,1,1,4,1,2,1,1,1,1,2,2,2,1,1,2,2,4,1,1,1,1,3,1,2,3,4,1,1,1,4,4,1,1,1,1,1,1,1,4,2,5,2,1,1,4,1,1,5,1,1,5,1,5,5,1,3,5,1,1,5,1,1,2,2,1,1,1,1,1,1,1,4,3,1,1,4,1,4,1,1,1,1,4,1,4,4,4,3,1,1,3,2,1,1,1,1,1,1,1,4,1,3,1,1,1,1,1,1,1,5,2,4,2,1,4,4,1,5,1,1,3,1,3,1,1,1,1,1,4,2,3,2,1,1,2,1,5,2,1,1,4,1,4,1,1,1,4,4,1,1,1,1,1,1,4,1,1,1,2,1,1,2
+            };
+//Stores number of fish 0-9 in the list "countx"
+for (int i = 0; i < 10; i++)
+{
+    tempInt = listOfFish.Where(x => x == i).Count();
+    countx.Add(tempInt);
+}
+
+while (success != true)
+{
+    success = Int32.TryParse(Console.ReadLine(), out numberOfDays);
+    if (success)
+    {
+        //Runs the experiement as many days as chosen
+        for (int j = 0; j < numberOfDays; j++)
+        {
+            //Adds new fish for each 0
+            tempInt = countx[0];
+            countx[7] = countx[7] + tempInt;
+            countx[9] = countx[9] + tempInt;
+
+            //Lowers each fish level by 1
+            //Remove index 0, adds one element to keep it the same amount
+            countx.RemoveAt(0);
+            countx.Add(0);
+            
+            count = countx[0]+ countx[1]+ countx[2]+ countx[3]+ countx[4]+ countx[5]+ countx[6]+ countx[7]+ countx[8];
+            Console.WriteLine(j + " number of days has passed.");
+            Console.WriteLine("There are now " + count + " number of fish and counting...");
+        }
+    }
+    else
+    {
+        Console.WriteLine("Error: Write a number only");
+        Console.Write("Choose how many days to run the fish experiment: ");
+    }
+}
+
+//Outputs the number of fish in the end
+Console.WriteLine(Environment.NewLine + Environment.NewLine + "There are " + count + " total fish alive after " + numberOfDays + " days.");
+Console.ReadKey();
